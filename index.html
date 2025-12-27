@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Pemecah Soal Pengantar Matriks</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f0f0f0;
+        }
+
+        .container {
+            width: 650px;
+            margin: 30px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        h1, h2 {
+            text-align: center;
+        }
+
+        table {
+            border-collapse: collapse;
+            margin: 10px auto;
+        }
+
+        td {
+            border: 2px solid #333;
+            width: 50px;
+            height: 50px;
+            text-align: center;
+        }
+
+        input {
+            width: 45px;
+            text-align: center;
+            font-size: 16px;
+        }
+
+        button {
+            padding: 8px 15px;
+            margin: 5px;
+            cursor: pointer;
+        }
+
+        .hasil {
+            margin-top: 20px;
+            background: #eee;
+            padding: 10px;
+            border-radius: 6px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>Pemecah Soal Pengantar Matriks</h1>
+
+    <h2>Input Matriks A (2 × 2)</h2>
+    <table>
+        <tr>
+            <td><input id="a11"></td>
+            <td><input id="a12"></td>
+        </tr>
+        <tr>
+            <td><input id="a21"></td>
+            <td><input id="a22"></td>
+        </tr>
+    </table>
+
+    <div style="text-align:center;">
+        <button onclick="hitung()">Pecahkan Soal</button>
+        <button onclick="hapus()">Hapus</button>
+    </div>
+
+    <div class="hasil" id="hasil"></div>
+</div>
+
+<script>
+function hitung() {
+    let a11 = parseInt(document.getElementById("a11").value);
+    let a12 = parseInt(document.getElementById("a12").value);
+    let a21 = parseInt(document.getElementById("a21").value);
+    let a22 = parseInt(document.getElementById("a22").value);
+
+    if (isNaN(a11) || isNaN(a12) || isNaN(a21) || isNaN(a22)) {
+        alert("Semua elemen matriks harus diisi!");
+        return;
+    }
+
+    let determinan = (a11 * a22) - (a12 * a21);
+
+    document.getElementById("hasil").innerHTML = `
+        <h3>Jawaban</h3>
+
+        <b>1. Matriks A:</b><br>
+        [ ${a11}  ${a12} ]<br>
+        [ ${a21}  ${a22} ]<br><br>
+
+        <b>2. Transpose Matriks A:</b><br>
+        [ ${a11}  ${a21} ]<br>
+        [ ${a12}  ${a22} ]<br><br>
+
+        <b>3. Determinan Matriks A:</b><br>
+        det(A) = (${a11} × ${a22}) − (${a12} × ${a21}) = <b>${determinan}</b>
+    `;
+}
+
+function hapus() {
+    document.getElementById("a11").value = "";
+    document.getElementById("a12").value = "";
+    document.getElementById("a21").value = "";
+    document.getElementById("a22").value = "";
+    document.getElementById("hasil").innerHTML = "";
+}
+</script>
+
+</body>
+</html>
+
